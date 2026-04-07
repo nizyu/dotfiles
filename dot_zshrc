@@ -1,0 +1,20 @@
+# .zshrc
+
+# mise activation
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+elif [ -f ~/.local/bin/mise ]; then
+  eval "$(~/.local/bin/mise activate zsh)"
+fi
+
+# Add custom PATHs
+export PATH="$HOME/.local/bin:$PATH"
+
+# Aliases
+alias ll="ls -l"
+alias la="ls -la"
+
+# Prompt
+autoload -Uz promptinit
+promptinit
+PROMPT='%F{green}%n@%m%f:%F{blue}%~%f$ '

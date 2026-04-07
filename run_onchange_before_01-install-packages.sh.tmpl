@@ -1,0 +1,34 @@
+#!/bin/bash
+set -euo pipefail
+
+echo "========================================"
+echo "Installing system packages & tools..."
+echo "========================================"
+
+{{ if eq .chezmoi.os "darwin" }}
+# Mac (BrewとMiseはインストール済み前提)
+echo "Mac environment detected. Assuming Brew and Mise are already installed."
+brew update
+brew install git curl zsh podman
+
+{{ else if eq .chezmoi.os "linux" }}
+  {{ if eq .chezmoi.osRelease.id "ubuntu" "debian" }}
+# Ubuntu / Debian
+sudo apt-get update
+sudo apt-get install -y curl git zsh podman
+  {{ else if eq .chezmoi.osRelease.id "arch" }}
+# Arch Linux
+sudo pacman -Sy --noconfirm curl git zsh podman
+  {{ else }}
+# その他のLinux
+echo "Unsupported Linux distribution: {{ .chezmoi.osRelease.id }}. Please install curl, git, zsh, podman manually."
+  {{ end }}
+
+  # インストールされていなければ Mise をインストール (https://mise.jdx.dev/getting-started.html)
+  if ! command -v mise >/dev/null 2>&1; then
+    echo "Installing mise for Linux..."
+    curl https://mise.run | sh
+  fi
+{{ end }}
+
+echo "Package installation completed."
