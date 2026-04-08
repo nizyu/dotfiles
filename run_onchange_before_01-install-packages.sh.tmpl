@@ -9,7 +9,7 @@ echo "========================================"
 # Mac (BrewとMiseはインストール済み前提)
 echo "Mac environment detected. Assuming Brew and Mise are already installed."
 brew update
-brew install git curl zsh podman
+brew install git curl
 
 {{ else if eq .chezmoi.os "linux" }}
   {{ if eq .chezmoi.osRelease.id "ubuntu" "debian" }}
