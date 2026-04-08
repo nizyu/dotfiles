@@ -15,7 +15,7 @@ Miseはbrewでインストールである想定です。
     ```
 2.  Chezmoi を初期化し、設定を適用します。
     ```bash
-    chezmoi init --apply https://github.com/YOUR_USERNAME/dotfiles.git
+    chezmoi init --apply https://github.com/nizyu/dotfiles.git
     ```
 
 ### Linux (Ubuntu, Arch, etc...)
