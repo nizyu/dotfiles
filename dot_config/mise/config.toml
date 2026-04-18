@@ -2,7 +2,9 @@
 node = "24"
 python = "3.12"
 go = "latest"
+java = "21"
 terraform = "latest"
 chezmoi = "latest"
 uv = "latest"
+
 
