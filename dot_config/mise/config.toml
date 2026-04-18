@@ -1,6 +1,6 @@
 [tools]
-node = "latest"
-python = "latest"
+node = "24"
+python = "3.12"
 go = "latest"
 terraform = "latest"
 chezmoi = "latest"
